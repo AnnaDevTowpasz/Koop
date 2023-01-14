@@ -1,0 +1,12 @@
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\bin\Debug\net5.0\Koop.Domain.deps.json
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\bin\Debug\net5.0\Koop.Domain.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\bin\Debug\net5.0\ref\Koop.Domain.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\bin\Debug\net5.0\Koop.Domain.pdb
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.csproj.AssemblyReference.cache
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.AssemblyInfoInputs.cache
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.AssemblyInfo.cs
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\ref\Koop.Domain.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Domain\obj\Debug\net5.0\Koop.Domain.pdb

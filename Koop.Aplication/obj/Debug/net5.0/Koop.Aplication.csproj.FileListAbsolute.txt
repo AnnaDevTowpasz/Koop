@@ -1,0 +1,15 @@
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\bin\Debug\net5.0\Koop.Aplication.deps.json
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\bin\Debug\net5.0\Koop.Aplication.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\bin\Debug\net5.0\ref\Koop.Aplication.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\bin\Debug\net5.0\Koop.Aplication.pdb
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\bin\Debug\net5.0\Koop.Domain.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\bin\Debug\net5.0\Koop.Domain.pdb
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.csproj.AssemblyReference.cache
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.AssemblyInfoInputs.cache
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.AssemblyInfo.cs
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.csproj.CoreCompileInputs.cache
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.csproj.CopyComplete
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\ref\Koop.Aplication.dll
+C:\Users\AnnaTowpasz\source\repos\Koop\Koop.Aplication\obj\Debug\net5.0\Koop.Aplication.pdb

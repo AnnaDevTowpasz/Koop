@@ -1,0 +1,120 @@
+﻿@page "/ProductList"
+
+@inject IJSRuntime JSRuntime1
+
+@if(products != null && products.Any())
+{
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Lista produktów</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Lista produktów</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Lista produktów</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nazwa</th>
+                                        <th>Dostawca</th>
+                                        <th>Opis</th>
+                                        <th>Kategoria</th>
+                                        <th>Akcje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var item in products)
+                                    {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>@item.Supplier</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.Category</td>
+                                            <td class="project-actions text-right">
+                                                <a class="btn btn-primary btn-sm" href="#">
+                                                    <i class="fas fa-folder"></i>
+                                                    View
+                                                </a>
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                    Edit
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+}
+@code {     
+
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Supplier { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+    }
+
+    public List<Product> products { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        products = new List<Product>();
+        Product p1 = new Product() { Id = 1, Name = "Marchewka", Category = "Warzywa", Supplier = "Maszyce", Description = "Marchewka z Maszyc" };
+        Product p2 = new Product() { Id = 2, Name = "Kapusta", Category = "Warzywa", Supplier = "Maszyce", Description = "Kapusta z Maszyc" };
+        Product p3 = new Product() { Id = 3, Name = "Łuskane orzechy", Category = "Orzechy", Supplier = "Ciocia Kasia", Description = "Orzechy włoskie łuskane" };
+        Product p4 = new Product() { Id = 4, Name = "Chleb orkiszowy", Category = "Pieczywo", Supplier = "Jadzia", Description = "Chleb orkiszowy 500 g ciemny" };
+        products.Add(p1);
+        products.Add(p2);
+        products.Add(p3);
+        products.Add(p4);
+
+        return base.OnInitializedAsync();
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        JSRuntime1.InvokeVoidAsync("ProductListScript");
+        return base.OnAfterRenderAsync(firstRender);
+    }
+}
