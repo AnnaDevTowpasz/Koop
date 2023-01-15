@@ -21,6 +21,20 @@
 *.Config
 
 # Build results
+Client/bin/
+Client/obj/
+Koop.Aplication/bin/
+Koop.Aplication/obj/
+Koop.Domain/obj/
+Koop.Domain/bin/
+Koop.Infrastructure/obj/
+Koop.Infrastructure/bin/
+Koop.Persistance/obj/
+Koop.Persistance/bin/
+Server/bin/
+Server/obj/
+Shared/obj/
+Shared/bin
 [Dd]ebug/
 bin/
 [Dd]ebugPublic/
