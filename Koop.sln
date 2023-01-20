@@ -9,15 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koop.Client", "Client\Koop.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koop.Shared", "Shared\Koop.Shared.csproj", "{03CBC4F4-A3B1-4937-A194-53048384C668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koop.Aplication", "Koop.Aplication\Koop.Aplication.csproj", "{ACBF4247-A082-4977-ADB6-E2B309A7B24F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koop.Aplication", "Koop.Aplication\Koop.Aplication.csproj", "{ACBF4247-A082-4977-ADB6-E2B309A7B24F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koop.Domain", "Koop.Domain\Koop.Domain.csproj", "{916CD606-75F0-4346-BDC4-77D6F7492C5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koop.Domain", "Koop.Domain\Koop.Domain.csproj", "{916CD606-75F0-4346-BDC4-77D6F7492C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koop.Persistance", "Koop.Persistance\Koop.Persistance.csproj", "{C8332185-490E-4136-A360-A22310184FB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koop.Persistance", "Koop.Persistance\Koop.Persistance.csproj", "{C8332185-490E-4136-A360-A22310184FB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koop.Infrastructure", "Koop.Infrastructure\Koop.Infrastructure.csproj", "{9AF5014E-ADFC-47FB-88F7-6EEA0AA40C99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Koop.Infrastructure", "Koop.Infrastructure\Koop.Infrastructure.csproj", "{9AF5014E-ADFC-47FB-88F7-6EEA0AA40C99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Koop", "Koop", "{3F052372-2FCD-4AAC-A8A3-6CC6B5A85420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koop.Api", "Koop.Api\Koop.Api.csproj", "{96EE58D8-41F0-4089-931B-7BE8ADDB2EBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{9AF5014E-ADFC-47FB-88F7-6EEA0AA40C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF5014E-ADFC-47FB-88F7-6EEA0AA40C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF5014E-ADFC-47FB-88F7-6EEA0AA40C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96EE58D8-41F0-4089-931B-7BE8ADDB2EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96EE58D8-41F0-4089-931B-7BE8ADDB2EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96EE58D8-41F0-4089-931B-7BE8ADDB2EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96EE58D8-41F0-4089-931B-7BE8ADDB2EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

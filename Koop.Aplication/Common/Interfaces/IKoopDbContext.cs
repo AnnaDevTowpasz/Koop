@@ -7,7 +7,7 @@ namespace Koop.Aplication.Common.Interfaces
 {
     public interface IKoopDbContext
     {
-        DbSet<Cathegory> Cathegories { get; set; }
+        DbSet<Category> Categories { get; set; }
         DbSet<Product> Products { get; set; }
         DbSet<Supplier> Suppliers { get; set; }
 
