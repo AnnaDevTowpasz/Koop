@@ -14,7 +14,8 @@ namespace Koop.Persistance
 
         public TContext CreateDbContext(string[] args)
         {
-            var basePath = Directory.GetCurrentDirectory() + string.Format("{0}..{0}Server", Path.DirectorySeparatorChar);
+            var basePath = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
+
             return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
         }
 
@@ -24,9 +25,9 @@ namespace Koop.Persistance
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(basePath)
-                .AddJsonFile("appsetings.json")
-                .AddJsonFile($"appsetings.Local.json", optional: true)
-                .AddJsonFile($"appsetings.{environmentName}.json", optional: true)
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.Local.json", optional: true)
+                .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
                 .AddEnvironmentVariables()
                 .Build();
 
@@ -39,10 +40,10 @@ namespace Koop.Persistance
         {
             if (String.IsNullOrEmpty(connectionString))
             {
-                throw new ArgumentException($"Connection string '{ConnectionStringName}' is null or empty.", nameof(connectionString));
+                throw new ArgumentException($"BLE1: Connection string '{ConnectionStringName}' is null or empty.", nameof(connectionString));
             }
 
-            Console.WriteLine($"DesignTimeDbContextFactoryBase.Create(string): connection string: '{connectionString}'.");
+            Console.WriteLine($"BLE2: DesignTimeDbContextFactoryBase.Create(string): connection string: '{connectionString}'.");
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
             optionsBuilder.UseSqlServer(connectionString);
