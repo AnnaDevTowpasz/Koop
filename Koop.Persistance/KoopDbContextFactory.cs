@@ -1,12 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Koop.Aplication.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Koop.Persistance
 {
     public class KoopDbContextFactory : DesignTimeDbContextFactoryBase<KoopDbContext>
     {
-        protected override KoopDbContext CreateNewInstance(DbContextOptions<KoopDbContext> options)
+        private readonly IDateTime _iDateTime;
+        protected override KoopDbContext CreateNewInstance(DbContextOptions<KoopDbContext> options, IDateTime dateTime)
         {
-            return new KoopDbContext(options);
+            return new KoopDbContext(options, _iDateTime);
         }
     }
 }
