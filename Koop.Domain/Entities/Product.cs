@@ -6,13 +6,15 @@ namespace Koop.Domain.Entities
     public class Product : AuditableEntity
     {
         public string Name { get; set; }
+        public string Description { get; set; }
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
-        public List<Category> Categories { get; private set; } = new List<Category>();
-        public EUnit Unit { get; set; }
-        public decimal PricePerUnit { get; set; }
-        public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        //public int? StoreId { get; set; }
+        public Store Store { get; set; }
+        public List<OrderPriceQuantity> OrderQuantities { get; private set; } = new List<OrderPriceQuantity>();
     }
 
-    public enum EUnit { kg, szt }
+    public enum EUnit { kg, szt, peczek }
 }

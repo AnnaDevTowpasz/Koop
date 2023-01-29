@@ -27,8 +27,6 @@ namespace Koop.Aplication.Products.Commands.CreateProduct
                 Description = request.Description,
                 Supplier = request.Supplier,
                 SupplierId = request.SupplierId,
-                Unit = request.Unit,
-                PricePerUnit = request.PricePerUnit,
                 StatusId = request.StatusId
             };
 
