@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Koop.Aplication.Products.Querries.AllProductsQuery
+namespace Koop.Aplication.Products.Commands.DeleteProduct
 {
-    class AllProductsQuery : IRequest<ProductsVM>
+    public class DeleteProductCommand : IRequest
     {
-
+        public int ProductId { get; set; }
     }
 }

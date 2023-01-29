@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Koop.Aplication;
 
 namespace Koop.Api
 {
@@ -29,14 +30,15 @@ namespace Koop.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAplication();
             services.AddInfrastructure(Configuration);
             services.AddPersistance(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Koop.Api", Version = "v1" });
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Koop.Api.xml");
-                c.IncludeXmlComments(filePath);
+                //var filePath = Path.Combine(System.AppContext.BaseDirectory, "Koop.Api.xml");
+                //c.IncludeXmlComments(filePath);
             });
         }
 
