@@ -1,9 +1,8 @@
 ﻿using Koop.Aplication.Products.Commands.CreateProduct;
-using Microsoft.AspNetCore.Http;
+using Koop.Aplication.Products.Commands.DeleteProduct;
+using Koop.Aplication.Products.Querries.GetProductDetail;
+using Koop.Aplication.Products.Querries.GetProductsQuery;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Koop.Api.Controllers
@@ -11,15 +10,29 @@ namespace Koop.Api.Controllers
     [Route("api/products")]
     public class ProductsController : BaseController
     {
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<DirectorDetailVm>> GetDetails(int id)
-        //{
-        //    var vm = await Mediator.Send(new GetDirectorDetailQuery() { DirectorId = id });
-        //    return vm;
-        //}
+        [HttpGet]
+        public async Task<ActionResult<ProductsVM>> GetProducts()
+        {
+            var vm = await Mediator.Send(new GetProductsQuery());
+            return vm;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDetailVm>> GetDetails(int id)
+        {
+            var vm = await Mediator.Send(new GetProductDetailQuery() { ProductId = id });
+            return vm;
+        }
 
         [HttpPost]
-        public async Task<IActionResult> CreateDirector(CreateProductCommand command)
+        public async Task<IActionResult> CreateProduct(CreateProductCommand command)
+        {
+            var result = await Mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct(DeleteProductCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);

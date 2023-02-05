@@ -14,7 +14,6 @@ namespace Koop.Domain.Entities
         //public int? StoreId { get; set; }
         public Store Store { get; set; }
         public List<OrderPriceQuantity> OrderQuantities { get; private set; } = new List<OrderPriceQuantity>();
-        public int StatusId { get; set; }
     }
 
     public enum EUnit { kg, szt, peczek }

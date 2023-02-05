@@ -21,6 +21,7 @@ namespace Koop.Aplication.Products.Querries.GetProductsQuery
         public async Task<ProductsVM> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
             var products = _context.Products.OrderByDescending(p => p.Name).ToList();
+            
             var productsVM = new ProductsVM()
             {
                 Products = products.Select(p => _mapper.Map<ProductDto>(p)).ToList()
