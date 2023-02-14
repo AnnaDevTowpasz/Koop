@@ -31,11 +31,11 @@ namespace Koop.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> DeleteProduct(DeleteProductCommand command)
-        {
-            var result = await Mediator.Send(command);
-            return Ok(result);
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> DeleteProduct(DeleteProductCommand command)
+        //{
+        //    var result = await Mediator.Send(command);
+        //    return Ok(result);
+        //}
     }
 }
