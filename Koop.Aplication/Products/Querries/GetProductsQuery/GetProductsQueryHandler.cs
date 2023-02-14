@@ -1,29 +1,27 @@
 ﻿using AutoMapper;
 using Koop.Aplication.Common.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Koop.Aplication.Products.Querries.AllProductsQuery
+namespace Koop.Aplication.Products.Querries.GetProductsQuery
 {
-    class AllProductsQueryHandler : IRequestHandler<AllProductsQuery, ProductsVM>
+    class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, ProductsVM>
     {
         private readonly IKoopDbContext _context;
         private readonly IMapper _mapper;
         
-        public AllProductsQueryHandler(IKoopDbContext koopDbContext, IMapper mapper)
+        public GetProductsQueryHandler(IKoopDbContext koopDbContext, IMapper mapper)
         {
             _context = koopDbContext;
             _mapper = mapper;
         }
 
-        public async Task<ProductsVM> Handle(AllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<ProductsVM> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
             var products = _context.Products.OrderByDescending(p => p.Name).ToList();
+            
             var productsVM = new ProductsVM()
             {
                 Products = products.Select(p => _mapper.Map<ProductDto>(p)).ToList()

@@ -1,10 +1,6 @@
 ﻿using Koop.Domain.Entities;
 using MediatR;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Koop.Aplication.Products.Commands.CreateProduct
 {
@@ -12,13 +8,13 @@ namespace Koop.Aplication.Products.Commands.CreateProduct
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
-        public List<Category> Categories { get; private set; } = new List<Category>();
-        public EUnit Unit { get; set; }
-        public decimal PricePerUnit { get; set; }
-        public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        public Store Store { get; set; }
+        public List<OrderPriceQuantity> OrderQuantities { get; private set; } = new List<OrderPriceQuantity>();
         public int StatusId { get; set; }
     }
-
 }

@@ -18,12 +18,25 @@ namespace Koop.Persistance
             _iDateTime = dateTime;
         }
 
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartLine> CartLines { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<DictionaryCartStatus> DictionaryCartStatuses { get; set; }
+        public DbSet<DictionaryOrderStatus> DictionaryOrderStatuses { get; set; }
+        public DbSet<DictionaryUserStatus> DictionaryUserStatuses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderPriceQuantity> OrderPriceQuantities { get; set; }
+        public DbSet<OrderUserStatus> OrderUserStatuses { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Store> Stores { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().OwnsOne(p => p.PersonName);
+            modelBuilder.Entity<User>().OwnsOne(p => p.Email);
+            modelBuilder.Entity<Order>().OwnsOne(p => p.OrderName);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 

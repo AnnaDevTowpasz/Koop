@@ -4,33 +4,31 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Koop.Aplication.Products.Commands.CreateProduct
+namespace Koop.Aplication.Categories.Commands.CreateCategory
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
+    class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, int>
     {
         private readonly IKoopDbContext _context;
-        public CreateProductCommandHandler(IKoopDbContext koopDbContext)
+        public CreateCategoryCommandHandler(IKoopDbContext koopDbContext)
         {
             _context = koopDbContext;
         }
 
-        public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
-            Product product = new()
+            Category category = new()
             {
                 Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
-                Supplier = request.Supplier,
-                SupplierId = request.SupplierId,
                 StatusId = request.StatusId
             };
 
-            _context.Products.Add(product);
+            _context.Categories.Add(category);
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return product.Id;
+            return category.Id;
         }
     }
 }

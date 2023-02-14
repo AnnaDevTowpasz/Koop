@@ -1,12 +1,7 @@
 ﻿using Koop.Aplication.Common.Mappings;
 using Koop.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Koop.Aplication.Products.Querries.AllProductsQuery
+namespace Koop.Aplication.Products.Querries.GetProductsQuery
 {
     public class ProductDto : IMapFrom<Product>
     {
