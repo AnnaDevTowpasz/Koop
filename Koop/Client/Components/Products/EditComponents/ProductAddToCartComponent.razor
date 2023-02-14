@@ -1,0 +1,30 @@
+﻿@using Koop.Shared.Products.Commands
+
+<EditForm Model="@product" OnSubmit="OnSubmitMethod">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <tr>
+        <td>@product.Name</td>
+        <td>@if (IsGroupedByCathegory)@product.Supplier else @product.Category</td>
+        <td>@product.Description</td>
+        <td>@product.Unit</td>
+        <td>@product.PricePerUnit</td>
+        <td><InputNumber id="ammount" @bind-Value="@product.Ammount" class="form-control" /></td>
+        <td class="project-actions text-right">
+            <input type="submit" value="Dodaj do koszyka" class="btn btn-success float-right" />
+        </td>
+    </tr>
+    <ValidationSummary />
+</EditForm>
+
+@code {
+    [Parameter]
+    public ProductInCartVM product { get; set; }
+    
+    [Parameter]
+    public bool IsGroupedByCathegory { get; set; }
+
+    private void OnSubmitMethod(EditContext editContext)
+    {
+
+    }
+}
