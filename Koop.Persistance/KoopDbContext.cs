@@ -13,9 +13,14 @@ namespace Koop.Persistance
     public class KoopDbContext : DbContext, IKoopDbContext
     {
         private readonly IDateTime _iDateTime;
-        public KoopDbContext(DbContextOptions<KoopDbContext> options, IDateTime dateTime) : base(options)
+        private readonly ICurrentUserService _userService;
+        public KoopDbContext(DbContextOptions<KoopDbContext> options) : base(options)
+        {
+        }
+        public KoopDbContext(DbContextOptions<KoopDbContext> options, IDateTime dateTime, ICurrentUserService userService) : base(options)
         {
             _iDateTime = dateTime;
+            _userService = userService;
         }
 
         public DbSet<Cart> Carts { get; set; }
@@ -47,19 +52,19 @@ namespace Koop.Persistance
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedBy = "";
+                        entry.Entity.CreatedBy = _userService.Email;
                         entry.Entity.Created = _iDateTime.Now;
                         entry.Entity.StatusId = 1;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.ModifiedBy = "";
+                        entry.Entity.ModifiedBy = _userService.Email;
                         entry.Entity.Modified = _iDateTime.Now;
                         break;
                     case EntityState.Deleted:
-                        entry.Entity.ModifiedBy = "";
+                        entry.Entity.ModifiedBy = _userService.Email;
                         entry.Entity.Modified = _iDateTime.Now;
                         entry.Entity.Inactivated = _iDateTime.Now;
-                        entry.Entity.InactivatedBy = "";
+                        entry.Entity.InactivatedBy = _userService.Email;
                         entry.Entity.StatusId = 0;
                         entry.State = EntityState.Modified;
                         break;

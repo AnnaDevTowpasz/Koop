@@ -1,4 +1,5 @@
-﻿using Koop.Aplication.Interfaces;
+﻿using Koop.Aplication.Common.Interfaces;
+using Koop.Aplication.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,8 @@ namespace Koop.Persistance
         private const string ConnectionStringName = "KoopDatabase";
         private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
 
-        private readonly IDateTime _iDateTime;
+        //private readonly IDateTime _iDateTime;
+        //private readonly ICurrentUserService _userService;
 
         public TContext CreateDbContext(string[] args)
         {
@@ -22,7 +24,7 @@ namespace Koop.Persistance
             return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
         }
 
-        protected abstract TContext CreateNewInstance(DbContextOptions<TContext> options, IDateTime dateTime);
+        protected abstract TContext CreateNewInstance(DbContextOptions<TContext> options); //, IDateTime dateTime, ICurrentUserService userService);
 
         private TContext Create(string basePath, string environmentName)
         {
@@ -51,7 +53,7 @@ namespace Koop.Persistance
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
             optionsBuilder.UseSqlServer(connectionString);
 
-            return CreateNewInstance(optionsBuilder.Options, _iDateTime);
+            return CreateNewInstance(optionsBuilder.Options); //, _iDateTime, _userService);
         }
     }
 }

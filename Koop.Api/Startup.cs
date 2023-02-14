@@ -15,6 +15,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Koop.Aplication;
+using Koop.Aplication.Common.Interfaces;
+using Koop.Api.Service;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Koop.Api
 {
@@ -34,11 +38,54 @@ namespace Koop.Api
             services.AddInfrastructure(Configuration);
             services.AddPersistance(Configuration);
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy => policy.AllowAnyOrigin());
+
+            });
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(typeof(ICurrentUserService), typeof(CurrentUserService));
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "https://localhost:5001";
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        ValidateAudience = false
+                    };
+                });
+            //services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication", Version = "v1" }));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Koop.Api", Version = "v1" });
-                //var filePath = Path.Combine(System.AppContext.BaseDirectory, "Koop.Api.xml");
-                //c.IncludeXmlComments(filePath);
+                c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows()
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
+                            TokenUrl = new Uri("https://localhost:5001/connect/token"),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                {"api1", "Full access" }
+                            }
+                        }
+                    }
+                });
+                //c.OperationFilter<AuthorizeCheckOperationFilter>();
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication", Version = "v1" });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Koop.Api.xml");
+                 c.IncludeXmlComments(filePath);
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "api1");
+                });
             });
         }
 
@@ -49,18 +96,30 @@ namespace Koop.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Koop.Api v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Koop v1");
+                    c.OAuthClientId("swagger");
+                    c.OAuth2RedirectUrl("https://localhost:44384/swagger/oauth2-redirect.html");
+                    c.OAuthUsePkce();
+                });
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireAuthorization("ApiScope");
             });
         }
     }
